@@ -119,10 +119,12 @@ Update code in /playbooks/common.yaml
         state: latest
  
  
+ 
  <img width="1155" alt="Screenshot 2022-12-02 at 21 35 17" src="https://user-images.githubusercontent.com/61475969/205392989-aa315c3b-3a59-4195-8bce-80677cb5b889.png">
         
 
 
+ 
 Next push code into repository and create a pull request to the main branch. Jenkins checksout the code and builds an artifact that is published on the ansible server.
 
 RUN FIRST ANSIBLE TEST
