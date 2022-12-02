@@ -69,7 +69,7 @@ ssh -A ubuntu@public-ip
 
 <img width="510" alt="Screenshot 2022-12-02 at 21 19 11" src="https://user-images.githubusercontent.com/61475969/205388298-495f0c6c-891a-4ff0-a6a4-fe9d5747586c.png">
 
-updating our /inventory/dev.yaml
+update /inventory/dev.yaml with server details
 
 [nfs]
 <NFS-Server-Private-IP-Address> ansible_ssh_user='ec2-user'
@@ -83,7 +83,10 @@ updating our /inventory/dev.yaml
 
 [lb]
 <Load-Balancer-Private-IP-Address> ansible_ssh_user='ubuntu'
-Creating a Common Playbook
+
+ 
+ 
+Step 4 -Creating a Common Playbook
 
 
 Update code in /playbooks/common.yaml
@@ -114,8 +117,11 @@ Update code in /playbooks/common.yaml
       apt:
         name: wireshark
         state: latest
+ 
+ 
+ <img width="1155" alt="Screenshot 2022-12-02 at 21 35 17" src="https://user-images.githubusercontent.com/61475969/205392989-aa315c3b-3a59-4195-8bce-80677cb5b889.png">
         
-<img width="1155" alt="Screenshot 2022-12-02 at 21 35 17" src="https://user-images.githubusercontent.com/61475969/205392989-aa315c3b-3a59-4195-8bce-80677cb5b889.png">
+
 
 Next push code into repository and create a pull request to the main branch. Jenkins checksout the code and builds an artifact that is published on the ansible server.
 
