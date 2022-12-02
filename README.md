@@ -6,11 +6,11 @@ I'll be using the server used for Jenkins for this project
 <img width="785" alt="Screenshot 2022-12-02 at 19 51 30" src="https://user-images.githubusercontent.com/61475969/205374781-b93c3e41-a279-41ce-b010-f2d83cb2a275.png">
 
 STEP 1 -Install Ansible on the server by running the command;
-Sudo apt-get update
-Sudo apt-get install ansible
+```Sudo apt-get update```
+```Sudo apt-get install ansible```
 
 Check Ansible is installed by running the command;
-Ansible --service
+```Ansible --service```
 
 <img width="565" alt="Screenshot 2022-12-02 at 19 59 45" src="https://user-images.githubusercontent.com/61475969/205375982-1e19a6a3-4ae3-42b7-abd9-368b309456be.png">
 
@@ -58,19 +58,20 @@ using SSH-Agent to upload our ssh public key to the jenkins-ansible server
 
 Exit your Jenkins/Ansible server and run the command in the folder your keypair is stored in:
 
-eval `ssh-agent -s`
-ssh-add <path-to-private-key>
+```eval `ssh-agent -s````
+```ssh-add privatekey.pem```
 Confirm the key has been added with the command below, you should see the name of your key
 
-ssh-add -l
+```ssh-add -l```
 Now, ssh into your Jenkins-Ansible server using ssh-agent
 
-ssh -A ubuntu@public-ip
+```ssh -A ubuntu@public-ip```
 
 <img width="510" alt="Screenshot 2022-12-02 at 21 19 11" src="https://user-images.githubusercontent.com/61475969/205388298-495f0c6c-891a-4ff0-a6a4-fe9d5747586c.png">
 
 update /inventory/dev.yaml with server details
 
+````
 [nfs]
 <NFS-Server-Private-IP-Address> ansible_ssh_user='ec2-user'
 
@@ -83,6 +84,7 @@ update /inventory/dev.yaml with server details
 
 [lb]
 <Load-Balancer-Private-IP-Address> ansible_ssh_user='ubuntu'
+````
 
  
  
@@ -91,6 +93,7 @@ Step 4 -Creating a Common Playbook
 
 Update code in /playbooks/common.yaml
 
+````
  ---
 - name: update web, nfs and db servers
   hosts: webservers, nfs, db
@@ -117,7 +120,7 @@ Update code in /playbooks/common.yaml
       apt:
         name: wireshark
         state: latest
- 
+```
  
  
  <img width="1155" alt="Screenshot 2022-12-02 at 21 35 17" src="https://user-images.githubusercontent.com/61475969/205392989-aa315c3b-3a59-4195-8bce-80677cb5b889.png">
