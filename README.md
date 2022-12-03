@@ -20,7 +20,7 @@ https://<jenkins_url:port/github-webhooks>
 
 Create a freestyle project in Jenkins called 'Ansible' , Add the config Repo url to as 'Repositry URL' and configure automatic builds when a trigger is made on the ansible-config-mgt directory via GITScm polling.
 
-Note- specify git branch as main in during configuration
+Note- specify git branch as main in during configuration and Choose 'Archive this Artefact' as post build action
 
 <img width="882" alt="Screenshot 2022-12-02 at 20 18 07" src="https://user-images.githubusercontent.com/61475969/205378769-e00638a7-c2b5-44d9-9da0-ae3f22680992.png">
  
