@@ -69,21 +69,30 @@ Now, ssh into your Jenkins-Ansible server using ssh-agent
 
 <img width="510" alt="Screenshot 2022-12-02 at 21 19 11" src="https://user-images.githubusercontent.com/61475969/205388298-495f0c6c-891a-4ff0-a6a4-fe9d5747586c.png">
 
+Create an instance launch template in AWS, then launch 5 ec2 instances from the template for server roles (NFS, 2WEB SERVERS, DB SERVER, LOAD BALANCER)
+
+<img width="1175" alt="Screenshot 2022-12-03 at 00 43 54" src="https://user-images.githubusercontent.com/61475969/205413998-6c7f360b-f4c9-4bb0-8cf7-0a5d4f93c38f.png">
+
+Copy the private IP ADDRESSES and test that you can take ssh to each by running the command:
+```ssh ubuntu@172.31.93.17```
+<img width="561" alt="Screenshot 2022-12-03 at 00 55 14" src="https://user-images.githubusercontent.com/61475969/205414397-31ebe295-c563-4c52-8f77-dafc00b3c449.png">
+
+
 update /inventory/dev.yaml with server details
 
 ````
 [nfs]
-<NFS-Server-Private-IP-Address> ansible_ssh_user='ec2-user'
+172.31.95.182 ansible_ssh_user='ubuntu'
 
 [webservers]
-<Web-Server1-Private-IP-Address> ansible_ssh_user='ec2-user'
-<Web-Server2-Private-IP-Address> ansible_ssh_user='ec2-user'
+172.31.87.250 ansible_ssh_user='ubuntu'
+172.31.93.17 ansible_ssh_user='ubuntu'
 
 [db]
-<Database-Private-IP-Address> ansible_ssh_user='ec2-user' 
+172.31.83.88 ansible_ssh_user='ubuntu' 
 
 [lb]
-<Load-Balancer-Private-IP-Address> ansible_ssh_user='ubuntu'
+172.31.27.213 ansible_ssh_user='ubuntu'
 ````
 
  
@@ -123,14 +132,41 @@ Update code in /playbooks/common.yaml
 ```        
 <img width="1155" alt="Screenshot 2022-12-02 at 21 35 17" src="https://user-images.githubusercontent.com/61475969/205392989-aa315c3b-3a59-4195-8bce-80677cb5b889.png">
         
+Commit the changes in the files to github by running the command:
+```git add.``` then ```git commit -m "made some changes"```
+<img width="1064" alt="Screenshot 2022-12-03 at 01 18 46" src="https://user-images.githubusercontent.com/61475969/205415686-5c3d2e74-30b0-41cf-99db-ee21ccceebcc.png">
 
+<img width="1068" alt="Screenshot 2022-12-03 at 01 22 00" src="https://user-images.githubusercontent.com/61475969/205415693-f9789591-c67d-4689-a6ed-c72b7932c697.png">
+
+<img width="1062" alt="Screenshot 2022-12-03 at 01 25 25" src="https://user-images.githubusercontent.com/61475969/205415816-37ca844d-6622-4996-b5ad-5f00f3c362ab.png">
 
  
 Next push code into repository and create a pull request to the main branch. Jenkins checksout the code and builds an artifact that is published on the ansible server.
 
-RUN FIRST ANSIBLE TEST
+<img width="1041" alt="Screenshot 2022-12-03 at 01 31 52" src="https://user-images.githubusercontent.com/61475969/205416122-ebc9be6d-9f4f-4b6e-afa9-895671528fc4.png">
 
-ansible-playbook -i /var/lib/jenkins/jobs/ansible/builds/<build-number>/archive/inventory/dev.yml /var/lib/jenkins/jobs/ansible/builds/<build-number>/archive/playbooks/common.yml
+Run the build command in Jenkins, then check the console for the latest update message
+
+<img width="769" alt="Screenshot 2022-12-03 at 02 26 53" src="https://user-images.githubusercontent.com/61475969/205418117-0b72a240-e0cc-429f-a826-47ab98bb92e9.png">
+
+<img width="879" alt="Screenshot 2022-12-03 at 02 17 30" src="https://user-images.githubusercontent.com/61475969/205418037-65708c2e-7c58-4fd0-a2e3-eaa9f9e8275e.png">
+
+
+
+
+
+
+Step 5 -Run First Ansible TEST
+
+SSH into the ansible server , then run the command;
+
+```
+ansible-playbook -i /var/lib/jenkins/jobs/ansible/builds/<ansiblelatestbuildnumber>/archive/inventory/dev.yml /var/lib/jenkins/jobs/ansible/builds/<ansiblelatestbuildnumber>/archive/playbooks/common.yml
+ ```
+
+<img width="879" alt="Screenshot 2022-12-03 at 01 45 36" src="https://user-images.githubusercontent.com/61475969/205417958-84fb2c8a-4773-4ac9-a950-b28429243833.png">
+
+ 
 
 
 
