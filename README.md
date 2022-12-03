@@ -58,7 +58,7 @@ using SSH-Agent to upload our ssh public key to the jenkins-ansible server
 
 Exit your Jenkins/Ansible server and run the command in the folder your keypair is stored in:
 
-```eval `ssh-agent -s````
+```eval 'ssh-agent -s` ```
 ```ssh-add privatekey.pem```
 Confirm the key has been added with the command below, you should see the name of your key
 
@@ -93,7 +93,7 @@ Step 4 -Creating a Common Playbook
 
 Update code in /playbooks/common.yaml
 
-````
+```
  ---
 - name: update web, nfs and db servers
   hosts: webservers, nfs, db
@@ -120,10 +120,8 @@ Update code in /playbooks/common.yaml
       apt:
         name: wireshark
         state: latest
-```
- 
- 
- <img width="1155" alt="Screenshot 2022-12-02 at 21 35 17" src="https://user-images.githubusercontent.com/61475969/205392989-aa315c3b-3a59-4195-8bce-80677cb5b889.png">
+```        
+<img width="1155" alt="Screenshot 2022-12-02 at 21 35 17" src="https://user-images.githubusercontent.com/61475969/205392989-aa315c3b-3a59-4195-8bce-80677cb5b889.png">
         
 
 
