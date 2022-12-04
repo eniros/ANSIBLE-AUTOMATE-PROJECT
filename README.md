@@ -106,7 +106,7 @@ Update code in /playbooks/common.yaml
  ---
 - name: update web, nfs and db servers
   hosts: webservers, nfs, db
-  remote_user: ec2-user
+  remote_user: ubuntu
   become: yes
   become_user: root
   tasks:
@@ -167,6 +167,11 @@ ansible-playbook -i /var/lib/jenkins/jobs/ansible/builds/<ansiblelatestbuildnumb
  
  <img width="1311" alt="Screenshot 2022-12-04 at 16 12 13" src="https://user-images.githubusercontent.com/61475969/205502205-f9da309a-3fd3-464b-bd42-9a4d39fc3647.png">
 
+Check the server to confirm the changes are reflected. Check if wireshark is installed
+
+<img width="572" alt="Screenshot 2022-12-04 at 16 22 22" src="https://user-images.githubusercontent.com/61475969/205502696-4f348225-1b7f-492e-8792-3c92a9cb2ab2.png">
+
+End
 
 
 
