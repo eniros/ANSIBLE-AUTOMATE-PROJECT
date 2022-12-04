@@ -164,9 +164,9 @@ SSH into the ansible server , then run the command;
 ansible-playbook -i /var/lib/jenkins/jobs/ansible/builds/<ansiblelatestbuildnumber>/archive/inventory/dev.yml /var/lib/jenkins/jobs/ansible/builds/<ansiblelatestbuildnumber>/archive/playbooks/common.yml
  ```
 
-<img width="879" alt="Screenshot 2022-12-03 at 01 45 36" src="https://user-images.githubusercontent.com/61475969/205417958-84fb2c8a-4773-4ac9-a950-b28429243833.png">
-
  
+ <img width="1311" alt="Screenshot 2022-12-04 at 16 12 13" src="https://user-images.githubusercontent.com/61475969/205502205-f9da309a-3fd3-464b-bd42-9a4d39fc3647.png">
+
 
 
 
